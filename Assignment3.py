@@ -1,6 +1,7 @@
 import types
 import inspect
 from functools import reduce
+
 # Returns the sum of two elements
 def sumTwo(a,b,c):
     return a+b+c
@@ -28,7 +29,7 @@ def myreduce(func, inpAry):
     inpCtr = 0
     ## retval = inpAry[0]
 
-    while inpCtr < inputLen:
+    while inpCtr < (inputLen - 1):
         
         paramCtr = 1
         paramAry = []        
@@ -38,6 +39,7 @@ def myreduce(func, inpAry):
 
         paramAry.append(retval)
         while paramCtr < arglen:
+            #print(inpCtr + paramCtr)
             paramAry.append(inpAry[inpCtr + paramCtr])
             paramCtr += 1
             
@@ -46,14 +48,13 @@ def myreduce(func, inpAry):
         #print(retval)
         
         inpCtr += (arglen - 1)
-       
+        #print(inpCtr)
+        
     return retval
 
-Ary = [2, 3, 4, 5, 6, 8 , 9]
+Ary = [2, 3, 4, 5, 6, 8 , 9, 10, 11]
 g = myreduce(sumTwo, Ary)
 print(g)
-
-
 
 
 #myfilter
